@@ -5,12 +5,13 @@ const inquirer = require('inquirer');
 inquirer
     .prompt([
         {
-            type: 'maxlength-input',
+            //how can i limit the characters
+            type: 'input',
             name: 'text',
             message: 'Enter your text (max 3 characters)',
-            maxLength: 3
         },
         {
+            //set limits for colors?
             type: 'input',
             name: 'color',
             message: 'What color would you like the font to be?'
@@ -29,14 +30,7 @@ inquirer
     ])
     .then((data) => {
         let fileData = new SVG(data.text, data.color, data.fill, data.shape)
-        fs.writeFile('shape.svg', fileData.renderHTML(), (err) =>
+        fs.writeFile('logo.svg', fileData.renderHTML(), (err) =>
             err ? console.log(err) : console.log('Success!')
         );
     });
-
-
-// fs.writeFile('shape.svg', example.renderHTML(), function (err) {
-//     if (err) {
-//         console.log(err)
-//     }
-// })
