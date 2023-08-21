@@ -5,16 +5,22 @@ const inquirer = require('inquirer');
 inquirer
     .prompt([
         {
-            //how can i limit the characters
             type: 'input',
             name: 'text',
             message: 'Enter your text (max 3 characters)',
+            // limits characters to 3
+            validate: function (input) {
+                if (input.length <= 3) {
+                    return true
+                } else {
+                    return 'Please use 3 characters or less'
+                }
+            }
         },
         {
-            //set limits for colors?
             type: 'input',
             name: 'color',
-            message: 'What color would you like the font to be?'
+            message: 'What color would you like the font to be?',
         },
         {
             type: 'list',
