@@ -31,6 +31,6 @@ inquirer
     .then((data) => {
         let fileData = new SVG(data.text, data.color, data.fill, data.shape)
         fs.writeFile('logo.svg', fileData.renderHTML(), (err) =>
-            err ? console.log(err) : console.log('Success!')
+            err ? console.log(err) : console.log('Generated logo.svg')
         );
     });
